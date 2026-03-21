@@ -20,7 +20,7 @@ export function validateSplit(
     return {
       personOwes: [],
       isValid: false,
-      error: 'Add at least one person to split with.',
+      error: '请至少添加一位分摊人员。',
     };
   }
 
@@ -34,13 +34,13 @@ export function validateSplit(
         return {
           personOwes,
           isValid: false,
-          error: `Shares sum to ${total.toFixed(1)}% — ${remaining.toFixed(1)}% unassigned`,
+          error: `已分配 ${total.toFixed(1)}%，剩余 ${remaining.toFixed(1)}% 未分配`,
         };
       } else {
         return {
           personOwes,
           isValid: false,
-          error: `Shares sum to ${total.toFixed(1)}% — ${Math.abs(remaining).toFixed(1)}% over`,
+          error: `已分配 ${total.toFixed(1)}%，超出 ${Math.abs(remaining).toFixed(1)}%`,
         };
       }
     }
@@ -54,13 +54,13 @@ export function validateSplit(
         return {
           personOwes,
           isValid: false,
-          error: `Shares sum to ${(total / 100).toFixed(2)} — ${(remaining / 100).toFixed(2)} remaining`,
+          error: `已分配 ${(total / 100).toFixed(2)}，剩余 ${(remaining / 100).toFixed(2)} 未分配`,
         };
       } else {
         return {
           personOwes,
           isValid: false,
-          error: `Shares sum to ${(total / 100).toFixed(2)} — ${(Math.abs(remaining) / 100).toFixed(2)} over`,
+          error: `已分配 ${(total / 100).toFixed(2)}，超出 ${(Math.abs(remaining) / 100).toFixed(2)}`,
         };
       }
     }

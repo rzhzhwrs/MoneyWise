@@ -37,9 +37,9 @@ export function AccountPicker({ accounts, selectedId, onSelect }: Props) {
         activeOpacity={0.7}
       >
         <View style={styles.triggerLeft}>
-          <Text style={styles.triggerLabel}>Account</Text>
+          <Text style={styles.triggerLabel}>账户</Text>
           <Text style={styles.triggerValue}>
-            {selected ? selected.name : 'Select account'}
+            {selected ? selected.name : '选择账户'}
           </Text>
         </View>
         {selected ? (
@@ -52,7 +52,7 @@ export function AccountPicker({ accounts, selectedId, onSelect }: Props) {
         <Pressable style={styles.backdrop} onPress={() => setOpen(false)} />
         <SafeAreaView style={styles.sheet}>
           <View style={styles.sheetHandle} />
-          <Text style={styles.sheetTitle}>Select Account</Text>
+          <Text style={styles.sheetTitle}>选择账户</Text>
           <FlatList
             data={accounts}
             keyExtractor={(item) => item.id}

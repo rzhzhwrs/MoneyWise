@@ -3,14 +3,14 @@ import { ScrollView, Text, TouchableOpacity, StyleSheet, View } from 'react-nati
 import type { ExpenseCategory } from '../../types';
 
 const CATEGORIES: { value: ExpenseCategory; label: string; emoji: string }[] = [
-  { value: 'food',          label: 'Food',        emoji: '🍜' },
-  { value: 'transport',     label: 'Transport',   emoji: '🚇' },
-  { value: 'accommodation', label: 'Stay',        emoji: '🏨' },
-  { value: 'entertainment', label: 'Fun',         emoji: '🎬' },
-  { value: 'shopping',      label: 'Shopping',    emoji: '🛍️' },
-  { value: 'health',        label: 'Health',      emoji: '💊' },
-  { value: 'utilities',     label: 'Utilities',   emoji: '💡' },
-  { value: 'other',         label: 'Other',       emoji: '📌' },
+  { value: 'food',          label: '餐饮',     emoji: '🍜' },
+  { value: 'transport',     label: '交通',     emoji: '🚇' },
+  { value: 'accommodation', label: '住宿',     emoji: '🏨' },
+  { value: 'entertainment', label: '娱乐',     emoji: '🎬' },
+  { value: 'shopping',      label: '购物',     emoji: '🛍️' },
+  { value: 'health',        label: '医疗',     emoji: '💊' },
+  { value: 'utilities',     label: '生活缴费', emoji: '💡' },
+  { value: 'other',         label: '其他',     emoji: '📌' },
 ];
 
 interface Props {

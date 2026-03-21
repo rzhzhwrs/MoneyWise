@@ -5,14 +5,14 @@ import { formatCurrency } from '../../utils/currency';
 import { Badge } from '../ui/Badge';
 
 const CATEGORY_LABELS: Record<string, string> = {
-  food: 'Food',
-  transport: 'Transport',
-  accommodation: 'Stay',
-  entertainment: 'Fun',
-  shopping: 'Shopping',
-  health: 'Health',
-  utilities: 'Utilities',
-  other: 'Other',
+  food: '餐饮',
+  transport: '交通',
+  accommodation: '住宿',
+  entertainment: '娱乐',
+  shopping: '购物',
+  health: '医疗',
+  utilities: '生活缴费',
+  other: '其他',
 };
 
 const CATEGORY_EMOJI: Record<string, string> = {

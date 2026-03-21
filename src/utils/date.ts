@@ -18,20 +18,20 @@ export function parseDateString(s: string): Date {
   return new Date(y, m - 1, d);
 }
 
-/** Format "YYYY-MM-DD" for display, e.g. "Mar 21, 2026" */
+/** Format "YYYY-MM-DD" for display, e.g. "2026年3月21日" */
 export function formatDisplayDate(s: string): string {
   const date = parseDateString(s);
-  return date.toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
+  return date.toLocaleDateString('zh-CN', {
     year: 'numeric',
+    month: 'long',
+    day: 'numeric',
   });
 }
 
-/** Format "YYYY-MM-DD" short, e.g. "Mar 21" */
+/** Format "YYYY-MM-DD" short, e.g. "3月21日" */
 export function formatShortDate(s: string): string {
   const date = parseDateString(s);
-  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  return date.toLocaleDateString('zh-CN', { month: 'long', day: 'numeric' });
 }
 
 export function nowISO(): string {

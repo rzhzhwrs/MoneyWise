@@ -28,21 +28,21 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="expenses"
         options={{
-          title: 'Expenses',
+          title: '支出',
           tabBarIcon: ({ focused }) => <TabIcon emoji="💸" focused={focused} />,
         }}
       />
       <Tabs.Screen
         name="accounts"
         options={{
-          title: 'Accounts',
+          title: '账户',
           tabBarIcon: ({ focused }) => <TabIcon emoji="💳" focused={focused} />,
         }}
       />
       <Tabs.Screen
         name="insights"
         options={{
-          title: 'Insights',
+          title: '统计',
           tabBarIcon: ({ focused }) => <TabIcon emoji="📊" focused={focused} />,
         }}
       />

@@ -31,7 +31,7 @@ describe('validateSplit — percentage mode', () => {
 
     expect(result.isValid).toBe(false);
     expect(result.error).toContain('85.0%');
-    expect(result.error).toContain('15.0% unassigned');
+    expect(result.error).toContain('15.0% 未分配');
   });
 
   it('is invalid when shares sum to more than 100%', () => {
@@ -40,7 +40,7 @@ describe('validateSplit — percentage mode', () => {
     const result = validateSplit(10000, people, shares, 'percentage');
 
     expect(result.isValid).toBe(false);
-    expect(result.error).toContain('over');
+    expect(result.error).toContain('超出');
   });
 
   it('is valid with three people summing to 100%', () => {
@@ -54,7 +54,7 @@ describe('validateSplit — percentage mode', () => {
   it('is invalid when no people', () => {
     const result = validateSplit(10000, [], [], 'percentage');
     expect(result.isValid).toBe(false);
-    expect(result.error).toContain('at least one person');
+    expect(result.error).toContain('至少添加一位');
   });
 });
 
@@ -74,7 +74,7 @@ describe('validateSplit — fixed mode', () => {
     const result = validateSplit(10000, people, shares, 'fixed');
 
     expect(result.isValid).toBe(false);
-    expect(result.error).toContain('remaining');
+    expect(result.error).toContain('未分配');
   });
 
   it('is invalid when fixed shares sum to more than expense', () => {
@@ -83,7 +83,7 @@ describe('validateSplit — fixed mode', () => {
     const result = validateSplit(10000, people, shares, 'fixed');
 
     expect(result.isValid).toBe(false);
-    expect(result.error).toContain('over');
+    expect(result.error).toContain('超出');
   });
 
   it('computes correct personOwes amounts in fixed mode', () => {

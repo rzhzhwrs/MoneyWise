@@ -14,11 +14,11 @@ export async function seedDefaultData(db: SQLiteDatabase): Promise<void> {
     `INSERT INTO accounts (id, name, type, balance, credit_limit, currency, created_at, updated_at)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
     randomUUID(),
-    'External Account',
+    '外部账户',
     'other',
     0,
     null,
-    'USD',
+    'CNY',
     now,
     now,
   );

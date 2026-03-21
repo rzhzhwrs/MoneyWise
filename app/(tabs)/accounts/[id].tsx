@@ -19,10 +19,10 @@ import { parseCents, centsToDisplay } from '../../../src/utils/currency';
 import type { AccountType } from '../../../src/types';
 
 const ACCOUNT_TYPES: { label: string; value: AccountType }[] = [
-  { label: 'Cash',   value: 'cash'   },
-  { label: 'Debit',  value: 'debit'  },
-  { label: 'Credit', value: 'credit' },
-  { label: 'Other',  value: 'other'  },
+  { label: '现金',   value: 'cash'   },
+  { label: '借记卡', value: 'debit'  },
+  { label: '信用卡', value: 'credit' },
+  { label: '其他',   value: 'other'  },
 ];
 
 export default function AccountFormScreen() {
@@ -58,7 +58,7 @@ export default function AccountFormScreen() {
   }, [id]);
 
   const handleSave = async () => {
-    if (!name.trim()) { setNameError('Name is required'); return; }
+    if (!name.trim()) { setNameError('请输入账户名称'); return; }
     setNameError('');
     setSaving(true);
     try {
@@ -74,7 +74,7 @@ export default function AccountFormScreen() {
       }
       router.back();
     } catch (e) {
-      Alert.alert('Save failed', String(e));
+      Alert.alert('保存失败', String(e));
     } finally {
       setSaving(false);
     }
@@ -82,16 +82,16 @@ export default function AccountFormScreen() {
 
   const handleDelete = () => {
     if (!existing) return;
-    Alert.alert('Delete Account', 'This cannot be undone.', [
-      { text: 'Cancel', style: 'cancel' },
+    Alert.alert('删除账户', '此操作无法撤销。', [
+      { text: '取消', style: 'cancel' },
       {
-        text: 'Delete', style: 'destructive',
+        text: '删除', style: 'destructive',
         onPress: async () => {
           try {
             await remove(existing.id);
             router.back();
           } catch (e) {
-            Alert.alert('Cannot delete', String(e));
+            Alert.alert('无法删除', String(e));
           }
         },
       },
@@ -102,12 +102,12 @@ export default function AccountFormScreen() {
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
-          <Text style={styles.backText}>‹ Back</Text>
+          <Text style={styles.backText}>‹ 返回</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>{isNew ? 'New Account' : 'Edit Account'}</Text>
+        <Text style={styles.headerTitle}>{isNew ? '新建账户' : '编辑账户'}</Text>
         {!isNew ? (
           <TouchableOpacity onPress={handleDelete}>
-            <Text style={styles.deleteText}>Delete</Text>
+            <Text style={styles.deleteText}>删除</Text>
           </TouchableOpacity>
         ) : <View style={{ width: 56 }} />}
       </View>
@@ -115,15 +115,15 @@ export default function AccountFormScreen() {
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
           <TextInput
-            label="Account Name"
+            label="账户名称"
             value={name}
             onChangeText={setName}
-            placeholder="e.g. Cash, Chase Debit"
+            placeholder="如：现金、招行储蓄卡"
             error={nameError}
           />
 
           <View>
-            <Text style={styles.label}>Account Type</Text>
+            <Text style={styles.label}>账户类型</Text>
             <SegmentedControl
               options={ACCOUNT_TYPES}
               value={type}
@@ -132,7 +132,7 @@ export default function AccountFormScreen() {
           </View>
 
           <TextInput
-            label="Current Balance"
+            label="当前余额"
             value={balanceText}
             onChangeText={setBalanceText}
             onBlur={() => {
@@ -145,7 +145,7 @@ export default function AccountFormScreen() {
 
           {type === 'credit' && (
             <TextInput
-              label="Credit Limit (optional)"
+              label="信用额度（可选）"
               value={creditLimitText}
               onChangeText={setCreditLimitText}
               onBlur={() => {
@@ -160,15 +160,15 @@ export default function AccountFormScreen() {
           )}
 
           <TextInput
-            label="Currency (ISO 4217)"
+            label="货币（ISO 4217）"
             value={currency}
             onChangeText={setCurrency}
-            placeholder="USD"
+            placeholder="CNY"
             autoCapitalize="characters"
             maxLength={3}
           />
 
-          <Button title="Save Account" onPress={handleSave} loading={saving} />
+          <Button title="保存账户" onPress={handleSave} loading={saving} />
         </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>

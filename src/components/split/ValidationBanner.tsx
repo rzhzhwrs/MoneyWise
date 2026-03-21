@@ -10,14 +10,14 @@ export function ValidationBanner({ isValid, error }: Props) {
   if (isValid) {
     return (
       <View style={[styles.banner, styles.valid]}>
-        <Text style={styles.validText}>✓ Shares balance correctly</Text>
+        <Text style={styles.validText}>✓ 分摊金额正确</Text>
       </View>
     );
   }
 
   return (
     <View style={[styles.banner, styles.invalid]}>
-      <Text style={styles.invalidText}>{error ?? 'Invalid split'}</Text>
+      <Text style={styles.invalidText}>{error ?? '分摊金额有误'}</Text>
     </View>
   );
 }

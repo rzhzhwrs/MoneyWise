@@ -25,11 +25,11 @@ describe('seedDefaultData', () => {
 
     expect(sql).toContain('INSERT INTO accounts');
     expect(id).toBe('test-uuid-1234');
-    expect(name).toBe('External Account');
+    expect(name).toBe('外部账户');
     expect(type).toBe('other');
     expect(balance).toBe(0);
     expect(creditLimit).toBeNull();
-    expect(currency).toBe('USD');
+    expect(currency).toBe('CNY');
   });
 
   it('does nothing when accounts already exist', async () => {

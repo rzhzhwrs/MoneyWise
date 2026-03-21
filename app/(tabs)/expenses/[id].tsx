@@ -48,7 +48,7 @@ export default function ExpenseFormScreen() {
       setAmountText('');
     } else {
       store.load(id).catch((e) => {
-        Alert.alert('Error', String(e));
+        Alert.alert('错误', String(e));
         router.back();
       });
     }
@@ -82,7 +82,7 @@ export default function ExpenseFormScreen() {
       if (store.expense) upsertLocal({ ...store.expense, id: savedId });
       router.back();
     } catch (e) {
-      Alert.alert('Save failed', String(e));
+      Alert.alert('保存失败', String(e));
     } finally {
       setSaving(false);
     }
@@ -90,10 +90,10 @@ export default function ExpenseFormScreen() {
 
   const handleDelete = () => {
     if (!store.expense) return;
-    Alert.alert('Delete Expense', 'This cannot be undone.', [
-      { text: 'Cancel', style: 'cancel' },
+    Alert.alert('删除支出', '此操作无法撤销。', [
+      { text: '取消', style: 'cancel' },
       {
-        text: 'Delete', style: 'destructive',
+        text: '删除', style: 'destructive',
         onPress: async () => {
           await store.deleteExpense(store.expense!.id);
           useExpenseStore.getState().reload();
@@ -104,7 +104,7 @@ export default function ExpenseFormScreen() {
   };
 
   const currency =
-    accounts.find((a) => a.id === store.expense?.accountId)?.currency ?? 'USD';
+    accounts.find((a) => a.id === store.expense?.accountId)?.currency ?? 'CNY';
 
   if (!store.expense) return null;
 
@@ -113,12 +113,12 @@ export default function ExpenseFormScreen() {
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
-          <Text style={styles.backText}>‹ Back</Text>
+          <Text style={styles.backText}>‹ 返回</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>{isNew ? 'New Expense' : 'Edit Expense'}</Text>
+        <Text style={styles.headerTitle}>{isNew ? '新建支出' : '编辑支出'}</Text>
         {!isNew ? (
           <TouchableOpacity onPress={handleDelete}>
-            <Text style={styles.deleteText}>Delete</Text>
+            <Text style={styles.deleteText}>删除</Text>
           </TouchableOpacity>
         ) : <View style={{ width: 56 }} />}
       </View>
@@ -157,7 +157,7 @@ export default function ExpenseFormScreen() {
           </View>
 
           {/* Category */}
-          <Text style={styles.sectionLabel}>Category</Text>
+          <Text style={styles.sectionLabel}>分类</Text>
           <CategoryPicker
             value={store.expense.category as ExpenseCategory}
             onChange={(c) => store.setField({ category: c })}
@@ -175,10 +175,10 @@ export default function ExpenseFormScreen() {
           {/* Description */}
           <View style={styles.field}>
             <TextInput
-              label="Description (optional)"
+              label="备注（可选）"
               value={store.expense.description ?? ''}
               onChangeText={(t) => store.setField({ description: t || null })}
-              placeholder="What was this for?"
+              placeholder="这笔钱用于什么？"
               multiline
             />
           </View>
@@ -196,8 +196,8 @@ export default function ExpenseFormScreen() {
             <View style={styles.splitSection}>
               <SegmentedControl
                 options={[
-                  { label: 'Percentage', value: 'percentage' },
-                  { label: 'Fixed Amount', value: 'fixed' },
+                  { label: '按比例', value: 'percentage' },
+                  { label: '固定金额', value: 'fixed' },
                 ]}
                 value={store.shareMode}
                 onChange={store.setShareMode}
@@ -230,10 +230,10 @@ export default function ExpenseFormScreen() {
 
               <TouchableOpacity
                 style={styles.addPersonBtn}
-                onPress={() => store.addPerson(`Person ${store.people.length + 1}`)}
+                onPress={() => store.addPerson(`人员 ${store.people.length + 1}`)}
                 activeOpacity={0.7}
               >
-                <Text style={styles.addPersonText}>+ Add Person</Text>
+                <Text style={styles.addPersonText}>+ 添加人员</Text>
               </TouchableOpacity>
 
               <EqualSplitButton
@@ -253,7 +253,7 @@ export default function ExpenseFormScreen() {
           {/* Save */}
           <View style={styles.saveRow}>
             <Button
-              title="Save Expense"
+              title="保存支出"
               onPress={handleSave}
               disabled={!canSave}
               loading={saving}

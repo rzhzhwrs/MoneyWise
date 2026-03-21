@@ -13,7 +13,7 @@ export function SplitSummaryCard({ personOwes, currency }: Props) {
 
   return (
     <View style={styles.card}>
-      <Text style={styles.title}>Split Summary</Text>
+      <Text style={styles.title}>分摊明细</Text>
       {personOwes.map((po) => (
         <View key={po.personId} style={styles.row}>
           <Text style={styles.name}>{po.personName}</Text>

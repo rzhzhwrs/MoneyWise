@@ -30,7 +30,7 @@ export default function RootLayout() {
   if (error) {
     return (
       <View style={styles.error}>
-        <Text style={styles.errorText}>Failed to initialize database:</Text>
+        <Text style={styles.errorText}>数据库初始化失败：</Text>
         <Text style={styles.errorDetail}>{error}</Text>
       </View>
     );

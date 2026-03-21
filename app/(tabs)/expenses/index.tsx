@@ -34,13 +34,13 @@ export default function ExpensesScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Expenses</Text>
+        <Text style={styles.headerTitle}>支出记录</Text>
       </View>
 
       {expenses.length === 0 ? (
         <EmptyState
-          title="No expenses yet"
-          subtitle="Tap + to log your first expense"
+          title="暂无支出记录"
+          subtitle="点击 + 记录第一笔支出"
         />
       ) : (
         <SectionList

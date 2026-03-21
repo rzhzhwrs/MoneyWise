@@ -26,7 +26,7 @@ export function DatePicker({ value, onChange }: Props) {
       </TouchableOpacity>
       <View style={styles.center}>
         <Text style={styles.date}>{formatDisplayDate(value)}</Text>
-        {isToday ? <Text style={styles.today}>Today</Text> : null}
+        {isToday ? <Text style={styles.today}>今天</Text> : null}
       </View>
       <TouchableOpacity style={styles.arrow} onPress={() => shift(1)} disabled={isToday}>
         <Text style={[styles.arrowText, isToday && styles.disabled]}>›</Text>

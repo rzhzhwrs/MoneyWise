@@ -10,8 +10,8 @@ export function SplitToggle({ value, onChange }: Props) {
   return (
     <View style={styles.row}>
       <View>
-        <Text style={styles.label}>Split Bill</Text>
-        <Text style={styles.sub}>Divide this expense among people</Text>
+        <Text style={styles.label}>分账</Text>
+        <Text style={styles.sub}>将这笔支出分摊给多人</Text>
       </View>
       <Switch
         value={value}

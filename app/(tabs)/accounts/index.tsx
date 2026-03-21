@@ -42,10 +42,10 @@ function AccountRow({ account, onPress }: { account: Account; onPress: () => voi
       {account.type === 'credit' && account.creditLimit !== null && (
         <View style={styles.creditRow}>
           <Text style={styles.creditLabel}>
-            Limit: {formatCurrency(account.creditLimit, account.currency)}
+            额度：{formatCurrency(account.creditLimit, account.currency)}
           </Text>
           <Text style={styles.creditLabel}>
-            Available: {formatCurrency(account.creditLimit - account.balance, account.currency)}
+            可用：{formatCurrency(account.creditLimit - account.balance, account.currency)}
           </Text>
         </View>
       )}
@@ -62,13 +62,13 @@ export default function AccountsScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Accounts</Text>
+        <Text style={styles.headerTitle}>账户</Text>
       </View>
 
       {accounts.length === 0 ? (
         <EmptyState
-          title="No accounts yet"
-          subtitle="Tap + to add your first account"
+          title="暂无账户"
+          subtitle="点击 + 添加第一个账户"
         />
       ) : (
         <FlatList

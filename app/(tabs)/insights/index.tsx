@@ -30,24 +30,24 @@ export default function InsightsScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Insights</Text>
-        <Text style={styles.headerSub}>This month</Text>
+        <Text style={styles.headerTitle}>统计</Text>
+        <Text style={styles.headerSub}>本月</Text>
       </View>
 
       <ScrollView contentContainerStyle={styles.content}>
         {/* Monthly total */}
         <Card style={styles.totalCard}>
-          <Text style={styles.totalLabel}>Total Spent</Text>
+          <Text style={styles.totalLabel}>本月支出</Text>
           <Text style={styles.totalAmount}>
-            {formatCurrency(monthTotal, accounts[0]?.currency ?? 'USD')}
+            {formatCurrency(monthTotal, accounts[0]?.currency ?? 'CNY')}
           </Text>
-          <Text style={styles.totalSub}>{monthExpenses.length} transactions</Text>
+          <Text style={styles.totalSub}>{monthExpenses.length} 笔</Text>
         </Card>
 
         {/* Category breakdown */}
         {sortedCats.length > 0 && (
           <Card>
-            <Text style={styles.sectionTitle}>By Category</Text>
+            <Text style={styles.sectionTitle}>按分类</Text>
             {sortedCats.map(([cat, amount]) => {
               const pct = monthTotal > 0 ? (amount / monthTotal) * 100 : 0;
               return (
@@ -57,7 +57,7 @@ export default function InsightsScreen() {
                     <View style={styles.catLabelRow}>
                       <Text style={styles.catName}>{cat.charAt(0).toUpperCase() + cat.slice(1)}</Text>
                       <Text style={styles.catAmount}>
-                        {formatCurrency(amount, accounts[0]?.currency ?? 'USD')}
+                        {formatCurrency(amount, accounts[0]?.currency ?? 'CNY')}
                       </Text>
                     </View>
                     <View style={styles.barBg}>
@@ -73,7 +73,7 @@ export default function InsightsScreen() {
         {/* Account balances */}
         {accounts.length > 0 && (
           <Card>
-            <Text style={styles.sectionTitle}>Account Balances</Text>
+            <Text style={styles.sectionTitle}>账户余额</Text>
             {accounts.map((acc) => (
               <View key={acc.id} style={styles.accRow}>
                 <Text style={styles.accName}>{acc.name}</Text>
@@ -87,7 +87,7 @@ export default function InsightsScreen() {
 
         {expenses.length === 0 && (
           <View style={styles.empty}>
-            <Text style={styles.emptyText}>Log some expenses to see insights here.</Text>
+            <Text style={styles.emptyText}>记录支出后，这里将显示统计数据。</Text>
           </View>
         )}
       </ScrollView>

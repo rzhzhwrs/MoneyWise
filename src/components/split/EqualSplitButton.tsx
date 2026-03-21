@@ -15,7 +15,7 @@ export function EqualSplitButton({ onPress, disabled }: Props) {
       activeOpacity={0.7}
     >
       <Text style={[styles.text, disabled && styles.disabledText]}>
-        ⚖️ Split Equally
+        ⚖️ 平均分摊
       </Text>
     </TouchableOpacity>
   );

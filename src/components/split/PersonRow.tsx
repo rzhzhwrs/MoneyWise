@@ -41,7 +41,7 @@ export function PersonRow({
         style={styles.nameInput}
         value={person.name}
         onChangeText={onNameChange}
-        placeholder="Name"
+        placeholder="姓名"
         placeholderTextColor="#9CA3AF"
       />
       <View style={styles.shareRow}>
