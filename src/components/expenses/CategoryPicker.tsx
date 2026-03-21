@@ -1,0 +1,65 @@
+import React from 'react';
+import { ScrollView, Text, TouchableOpacity, StyleSheet, View } from 'react-native';
+import type { ExpenseCategory } from '../../types';
+
+const CATEGORIES: { value: ExpenseCategory; label: string; emoji: string }[] = [
+  { value: 'food',          label: 'Food',        emoji: '🍜' },
+  { value: 'transport',     label: 'Transport',   emoji: '🚇' },
+  { value: 'accommodation', label: 'Stay',        emoji: '🏨' },
+  { value: 'entertainment', label: 'Fun',         emoji: '🎬' },
+  { value: 'shopping',      label: 'Shopping',    emoji: '🛍️' },
+  { value: 'health',        label: 'Health',      emoji: '💊' },
+  { value: 'utilities',     label: 'Utilities',   emoji: '💡' },
+  { value: 'other',         label: 'Other',       emoji: '📌' },
+];
+
+interface Props {
+  value: ExpenseCategory;
+  onChange: (value: ExpenseCategory) => void;
+}
+
+export function CategoryPicker({ value, onChange }: Props) {
+  return (
+    <ScrollView
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      contentContainerStyle={styles.row}
+    >
+      {CATEGORIES.map((cat) => {
+        const active = cat.value === value;
+        return (
+          <TouchableOpacity
+            key={cat.value}
+            style={[styles.chip, active && styles.activeChip]}
+            onPress={() => onChange(cat.value)}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.emoji}>{cat.emoji}</Text>
+            <Text style={[styles.label, active && styles.activeLabel]}>
+              {cat.label}
+            </Text>
+          </TouchableOpacity>
+        );
+      })}
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  row: { paddingHorizontal: 16, gap: 8, paddingVertical: 4 },
+  chip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 20,
+    backgroundColor: '#F3F4F6',
+    borderWidth: 2,
+    borderColor: 'transparent',
+  },
+  activeChip: { backgroundColor: '#DBEAFE', borderColor: '#3B82F6' },
+  emoji: { fontSize: 16 },
+  label: { fontSize: 13, fontWeight: '500', color: '#374151' },
+  activeLabel: { color: '#1D4ED8', fontWeight: '600' },
+});
