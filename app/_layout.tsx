@@ -1,3 +1,4 @@
+import '../global.css';
 import { useEffect, useState } from 'react';
 import { SplashScreen, Stack } from 'expo-router';
 import { openDatabase } from '../src/db/client';
