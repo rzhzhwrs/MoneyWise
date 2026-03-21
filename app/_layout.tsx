@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { SplashScreen, Stack } from 'expo-router';
 import { openDatabase } from '../src/db/client';
 import { runMigrations } from '../src/db/migrations';
+import { seedDefaultData } from '../src/db/seed';
 import { View, Text, StyleSheet } from 'react-native';
 
 SplashScreen.preventAutoHideAsync();
@@ -16,6 +17,7 @@ export default function RootLayout() {
       try {
         const db = await openDatabase();
         await runMigrations(db);
+        await seedDefaultData(db);
         setReady(true);
       } catch (e) {
         setError(String(e));
