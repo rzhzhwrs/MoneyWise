@@ -30,8 +30,7 @@
     "scheme": "moneywise",
     "plugins": [
       "expo-router",
-      "expo-sqlite",
-      "expo-dev-client"
+      "expo-sqlite"
     ]
   }
 }
